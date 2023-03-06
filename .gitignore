@@ -1,0 +1,10 @@
+.idea/
+.input/*
+/src/it/reply/input/*
+.output/*
+.out/*
+/src/it/reply/output/*
+*.iml
+*.class
+/src/it/reply/input/*
+/out/
