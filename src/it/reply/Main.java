@@ -15,6 +15,7 @@ public class Main {
 
         System.out.println("Commit Lorenzo Fratini");
         System.out.println("Commit Nicola Levorato");
+        System.out.println("Commit Fra");
 
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
