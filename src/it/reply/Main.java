@@ -13,6 +13,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        System.out.println("Commit Lorenzo Fratini");
+
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
         List<String> inputFiles = Arrays.asList("01","04");
