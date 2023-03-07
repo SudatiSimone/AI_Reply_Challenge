@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Commit Lorenzo Fratini");
+        System.out.println("Commit Fra");
 
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
