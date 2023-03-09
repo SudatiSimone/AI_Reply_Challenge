@@ -19,6 +19,7 @@ public class Utils {
                 }
             }
         }
+        gridElem.isPresent = true;
         return gridElem;
     }
 
