@@ -1,7 +1,7 @@
 package it.reply;
 
-import it.reply.model.Demon;
-import it.reply.model.Pandora;
+import it.reply.model.Header;
+import it.reply.model.Snakes;
 import it.reply.parser.InputParser;
 import it.reply.parser.OutputParser;
 
@@ -25,8 +25,9 @@ public class Main {
 
             // Parse input
             InputParser inputParser = new InputParser(inputDirectory + "/" + file);
-            Pandora pandora = inputParser.parsePandora();
-            List<Demon> demons = inputParser.parseDemons(pandora);
+            Header pandora = inputParser.parseHeader();
+            Snakes snakes = inputParser.parseSnakes();
+            inputParser.parseGrid(inputParser.parseHeader())
             inputParser.close();
 
             // Solutioning

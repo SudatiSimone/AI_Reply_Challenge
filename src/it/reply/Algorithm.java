@@ -1,10 +1,6 @@
 package it.reply;
 
-import it.reply.model.Demon;
-import it.reply.model.Pandora;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;

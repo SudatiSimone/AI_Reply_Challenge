@@ -1,7 +1,6 @@
 package it.reply.parser;
 
-import it.reply.model.Demon;
-import it.reply.model.Pandora;
+import it.reply.model.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,41 +13,46 @@ public class InputParser {
         br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
     }
 
-    public Pandora parsePandora() throws IOException {
-        String pandoraLine = br.readLine();
-        String[] splits = pandoraLine.split(" ");
-        Pandora pandora = new Pandora();
-        pandora.currentStamina = Integer.parseInt(splits[0]);
-        pandora.totalStamina = Integer.parseInt(splits[1]);
-        pandora.totalTurns = Integer.parseInt(splits[2]);
-        pandora.totalDemons = Integer.parseInt(splits[3]);
-        return pandora;
+    public Header parseHeader() throws IOException {
+        String headerLine = br.readLine();
+        String[] splits = headerLine.split(" ");
+        Header header = new Header();
+        header.colNr = Integer.parseInt(splits[0]);
+        header.rowNr = Integer.parseInt(splits[1]);
+        header.snakeNr = Integer.parseInt(splits[2]);
+        return header;
     }
 
-    public List<Demon> parseDemons(Pandora pandora) throws IOException {
-        List<Demon> demons = new ArrayList<>();
-        for(int i = 0; i < pandora.totalDemons; i++) {
+    public Snakes parseSnakes() throws IOException {
+        Snakes snakes = new Snakes();
+        String snakesLengthLine = br.readLine();
+        String[] splits = snakesLengthLine.split(" ");
+        List<Integer> lengths = new ArrayList<>();
+        for(int j = 0; j < splits.length; j++) {
+            lengths.add(Integer.parseInt(splits[j]));
+        }
+        snakes.lenghtList = lengths;
+        return snakes;
+    }
+
+    public Grid parseGrid(Header header) throws IOException {
+        Grid v = new Grid(header.rowNr, header.colNr);
+        for (int i = 0; i < header.rowNr; i++) {
             String demonLine = br.readLine();
             String[] splits = demonLine.split(" ");
-            Demon demon = new Demon();
-            demon.index = i;
-            demon.staminaCost = Integer.parseInt(splits[0]);
-            if(demon.staminaCost <= pandora.totalStamina) {
-                demon.staminaCooldown = Integer.parseInt(splits[1]);
-                demon.staminaRestored = Integer.parseInt(splits[2]);
-                demon.totalTurns = Integer.parseInt(splits[3]);
-                List<Integer> points = new ArrayList<>();
-                for(int j = 0; j < demon.totalTurns; j++) {
-                    points.add(Integer.parseInt(splits[j + 4]));
+            for (int j = 0; j < header.colNr; i++) {
+                GridElem gridElem = new GridElem();
+                if ("*".equals(splits[j].charAt(0))) {
+                    gridElem.isWarmhole=true;
+                    gridElem.relevance=0;
+                } else {
+                    gridElem.isWarmhole=false;
+                    gridElem.relevance=Integer.parseInt(splits[j]);
                 }
-                demon.points = points;
-                demons.add(demon);
+                gridElem.isPresent=false;
+                v.e[i][j] = gridElem;
             }
         }
-        return demons;
-    }
-
-    public void close() throws IOException {
-        br.close();
+        return v;
     }
 }
