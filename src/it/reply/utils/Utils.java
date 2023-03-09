@@ -10,8 +10,8 @@ public class Utils {
         GridElem gridElem = new GridElem();
         int max = grid.e[0][0].relevance;
 
-        for (int i=0;i<header.rowNr;i++) {
-            for (int j=0;i<header.colNr;j++) {
+        for (int i = 0; i < header.rowNr - 1; ++i) {
+            for (int j = 0; j < header.colNr - 1; ++j) {
                 if (!grid.e[i][j].isPresent && max < grid.e[i][j].relevance) {
                     max = grid.e[i][j].relevance;
                     gridElem.indexRow = i;
@@ -23,7 +23,6 @@ public class Utils {
         return gridElem;
     }
 
-
     public static boolean canMoves(Snake snake) {
         return snake.length > 0;
     }
@@ -33,7 +32,7 @@ public class Utils {
     }
 
     public static GridElem moveRight(Grid grid, Integer i, Integer j) {
-        return grid.e[i][j+1];
+        return grid.e[i][j + 1];
     }
 
     public static GridElem nextBestMove(Grid grid, Integer rowIndex, Integer columnIndex, Integer rows, Integer columns) {

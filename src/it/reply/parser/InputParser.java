@@ -52,7 +52,7 @@ public class InputParser {
                 }
                 gridElem.isPresent=false;
                 v.e[i][j] = gridElem;
-                System.out.println(v.e[i][j].relevance);
+//                System.out.println(v.e[i][j].relevance);
             }
         }
         return v;

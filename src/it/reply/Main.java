@@ -2,6 +2,7 @@ package it.reply;
 
 import it.reply.model.Grid;
 import it.reply.model.Header;
+import it.reply.model.SnakeOut;
 import it.reply.model.Snakes;
 import it.reply.parser.InputParser;
 import it.reply.parser.OutputParser;
@@ -15,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
-        List<String> inputFiles = Arrays.asList("00");
+        List<String> inputFiles = Arrays.asList("00", "01", "02", "03", "04", "05");
 
         for(String file : inputFiles) {
             Algorithm algo = new Algorithm();
@@ -33,17 +34,17 @@ public class Main {
             SnakeOut snakeOut = algorithm.solve(header, snakes, grid);
 
             // Parse output
-            //OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
-            //outputParser.parseOutput(indexes);
-            //outputParser.close();
-
-            //Print
-            GridElem cell = Utils.nextBestMove(grid, 2, 9, 5, 9);
-            System.out.println("Riga: " + cell.indexRow);
-            System.out.println("Colonna: " + cell.indexColumn);
             OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
             outputParser.parseOutput(snakeOut, header.snakeNr, header.colNr, header.rowNr);
             outputParser.close();
+
+            //Print
+//            GridElem cell = Utils.nextBestMove(grid, 2, 9, 5, 9);
+//            System.out.println("Riga: " + cell.indexRow);
+//            System.out.println("Colonna: " + cell.indexColumn);
+//            OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
+//            outputParser.parseOutput(snakeOut, header.snakeNr, header.colNr, header.rowNr);
+//            outputParser.close();
         }
     }
 }
