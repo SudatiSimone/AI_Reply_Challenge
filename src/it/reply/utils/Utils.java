@@ -6,6 +6,23 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class Utils {
 
+    public static GridElem startFreeGridElem(Header header, Grid grid) {
+        GridElem gridElem = new GridElem();
+        int max = grid.e[0][0].relevance;
+
+        for (int i=0;i<header.rowNr;i++) {
+            for (int j=0;i<header.colNr;j++) {
+                if (!grid.e[i][j].isPresent && max < grid.e[i][j].relevance) {
+                    max = grid.e[i][j].relevance;
+                    gridElem.indexRow = i;
+                    gridElem.indexColumn = j;
+                }
+            }
+        }
+        return gridElem;
+    }
+
+
     public static boolean canMoves(Snake snake) {
         return snake.length > 0;
     }
