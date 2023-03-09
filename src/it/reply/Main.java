@@ -1,5 +1,6 @@
 package it.reply;
 
+import it.reply.model.Grid;
 import it.reply.model.Header;
 import it.reply.model.Snakes;
 import it.reply.parser.InputParser;
@@ -29,16 +30,13 @@ public class Main {
             InputParser inputParser = new InputParser(inputDirectory + "/" + file);
             Header pandora = inputParser.parseHeader();
             Snakes snakes = inputParser.parseSnakes();
-            inputParser.parseGrid(inputParser.parseHeader())
+            Grid grid = inputParser.parseGrid(inputParser.parseHeader());
             inputParser.close();
 
-            // Solutioning
-            List<Integer> indexes = algo.solve(pandora, demons);
-
             // Parse output
-            OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
-            outputParser.parseOutput(indexes);
-            outputParser.close();
+            //OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
+            //outputParser.parseOutput(indexes);
+            //outputParser.close();
         }
     }
 }

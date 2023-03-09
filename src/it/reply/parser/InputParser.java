@@ -55,4 +55,8 @@ public class InputParser {
         }
         return v;
     }
+
+    public void close() throws IOException {
+        br.close();
+    }
 }
