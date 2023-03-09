@@ -17,6 +17,8 @@ public class Main {
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
         List<String> inputFiles = Arrays.asList("00", "01", "02", "03", "04", "05");
+//                List<String> inputFiles = Arrays.asList("05");
+
 
         for(String file : inputFiles) {
             Algorithm algo = new Algorithm();

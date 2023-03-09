@@ -28,7 +28,7 @@ public class InputParser {
         String snakesLengthLine = br.readLine();
         String[] splits = snakesLengthLine.split(" ");
         List<Integer> lengths = new ArrayList<>();
-        for(int j = 0; j < splits.length; j++) {
+        for (int j = 0; j < splits.length; j++) {
             lengths.add(Integer.parseInt(splits[j]));
         }
         snakes.lenghtList = lengths;
@@ -42,15 +42,16 @@ public class InputParser {
             String[] splits = demonLine.split(" ");
             for (int j = 0; j < header.colNr; j++) {
                 GridElem gridElem = new GridElem();
-                char car = splits[j].charAt(0);
-                if ('*'==car) {
-                    gridElem.isWarmhole=true;
-                    gridElem.relevance=0;
+                if ("*".equals(splits[j])) {
+                    gridElem.isWarmhole = true;
+                    gridElem.relevance = 0;
                 } else {
-                    gridElem.isWarmhole=false;
-                    gridElem.relevance=Integer.parseInt(String.valueOf(car));
+                    gridElem.isWarmhole = false;
+                    gridElem.relevance = Integer.parseInt(String.valueOf(splits[j]));
                 }
-                gridElem.isPresent=false;
+                gridElem.isPresent = false;
+                gridElem.indexColumn = j;
+                gridElem.indexRow = i;
                 v.e[i][j] = gridElem;
 //                System.out.println(v.e[i][j].relevance);
             }

@@ -10,9 +10,12 @@ public class Utils {
         GridElem gridElem = new GridElem();
         int max = grid.e[0][0].relevance;
 
-        for (int i = 0; i < header.rowNr - 1; ++i) {
-            for (int j = 0; j < header.colNr - 1; ++j) {
+        for (int i = 0; i < header.rowNr - 1; i++) {
+
+            for (int j = 0; j < header.colNr - 1; j++) {
+
                 if (!grid.e[i][j].isPresent && max < grid.e[i][j].relevance) {
+
                     max = grid.e[i][j].relevance;
                     gridElem.indexRow = i;
                     gridElem.indexColumn = j;
@@ -20,6 +23,8 @@ public class Utils {
             }
         }
         gridElem.isPresent = true;
+        grid.e[gridElem.indexRow][gridElem.indexColumn].isPresent = true;
+        System.out.println("scelgo " + gridElem.indexColumn + "-" + gridElem.indexRow);
         return gridElem;
     }
 
@@ -94,7 +99,7 @@ public class Utils {
                 nextCell.indexColumn = columnIndex + 1;
             }
         }
-        nextCell.isPresent = true;
+        grid.e[nextCell.indexRow][nextCell.indexColumn].isPresent = true;
         return nextCell;
     }
 

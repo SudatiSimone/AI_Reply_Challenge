@@ -23,6 +23,7 @@ public class Algorithm {
         List<Cell> cells = new ArrayList<>();
         GridElem gridElem = null;
         Cell currCell = null;
+        int i = 0;
 
         //Iterando sui serpenti
         for (Integer l : serpenti) {
@@ -32,19 +33,21 @@ public class Algorithm {
             //iterare sulla lunghezza del serpente
             for (Integer j =0; j < l; ++j){
 
-                gridElem = Utils.startFreeGridElem(h, grid);
+
 
                 if (j == 0) {
+                    gridElem = Utils.startFreeGridElem(h, grid);
                     currCell = new Cell(gridElem.indexColumn, gridElem.indexRow, gridElem.isWarmhole);
                     cells.add(currCell);
                 } else {
-                    GridElem gridElem1 = Utils.nextBestMove(grid, gridElem.indexColumn, gridElem.indexRow, h.rowNr - 1, h.colNr - 1);
+                    GridElem gridElem1 = Utils.nextBestMove(grid, gridElem.indexRow, gridElem.indexColumn, h.rowNr -1, h.colNr -1);
                     currCell = new Cell(gridElem1.indexColumn, gridElem1.indexRow, gridElem1.isWarmhole);
                     cells.add(currCell);
                 }
             }
 
-            snakeOut.paths.put(l, cells);
+            snakeOut.paths.put(i, cells);
+            i = i + 1;
 
         }
 
