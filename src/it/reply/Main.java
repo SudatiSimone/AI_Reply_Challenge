@@ -2,6 +2,7 @@ package it.reply;
 
 import it.reply.model.Grid;
 import it.reply.model.Header;
+import it.reply.model.SnakeOut;
 import it.reply.model.Snakes;
 import it.reply.parser.InputParser;
 import it.reply.parser.OutputParser;
@@ -17,7 +18,7 @@ public class Main {
         String outputDirectory = "src/it/reply/output";
         List<String> inputFiles = Arrays.asList("00");
 
-        for(String file : inputFiles) {
+        for (String file : inputFiles) {
             Algorithm algo = new Algorithm();
             System.out.println("FILE: " + file);
 
@@ -28,10 +29,14 @@ public class Main {
             Grid grid = inputParser.parseGrid(header);
             inputParser.close();
 
+            Algorithm algorithm = new Algorithm();
+
+            SnakeOut snakeOut = algorithm.solve(header, snakes, grid);
+
             // Parse output
-            //OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
-            //outputParser.parseOutput(indexes);
-            //outputParser.close();
+            OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
+            outputParser.parseOutput(snakeOut, header.snakeNr, header.colNr, header.rowNr);
+            outputParser.close();
         }
     }
 }

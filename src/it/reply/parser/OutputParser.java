@@ -27,10 +27,10 @@ public class OutputParser {
                     int size = snakeOut.paths.get(i).size();
 
                     // Mettere la prima posizione
-                    bw.write(path.get(0).column + " " + path.get(0).row + " ");
+                    bw.write(path.get(0).column + " " + path.get(0).row);
 
                     // Iterare sulle posizioni del singolo serprente
-                    for (int j = 0; i < size - 1; ++i) {
+                    for (int j = 0; j < size - 1; ++j) {
 
                         //Se non è un buco
                         if (!path.get(j).isWormholeEntry){
@@ -44,7 +44,10 @@ public class OutputParser {
 
                     }
 
-                    bw.write("\n");
+//                    if (i < size ){
+                        bw.write("\n");
+//                    }
+
 
                 }
             }
@@ -55,18 +58,18 @@ public class OutputParser {
     public String calculateDirectionNoBuchi(Cell beforeCell, Cell afterCell, Integer numCol, Integer numRow) {
 
         String dir = "R";
-        if ((beforeCell.column == afterCell.column + 1 && beforeCell.row == afterCell.row)
+        if ((beforeCell.column + 1 == afterCell.column  && beforeCell.row == afterCell.row)
             || (beforeCell.column == numCol - 1 && afterCell.column == 0 && beforeCell.row == afterCell.row)) {
             dir = "R";
-        } else if ((beforeCell.column == afterCell.column - 1 && beforeCell.row == afterCell.row)
+        } else if ((beforeCell.column - 1 == afterCell.column  && beforeCell.row == afterCell.row)
             || (beforeCell.column == 0 && afterCell.column == numCol - 1 && beforeCell.row == afterCell.row)) {
             dir = "L";
-        } else if ((beforeCell.row == afterCell.row + 1 && beforeCell.column == afterCell.column)
-            || (beforeCell.row == 0 && afterCell.row == numRow - 1 && beforeCell.column == afterCell.column)) {
-            dir = "U";
-        } else if ((beforeCell.row == afterCell.row - 1 && beforeCell.column == afterCell.column)
+        } else if ((beforeCell.row + 1 == afterCell.row  && beforeCell.column == afterCell.column)
             || (beforeCell.row == numRow - 1 && afterCell.row == 0 && beforeCell.column == afterCell.column)) {
             dir = "D";
+        } else if ((beforeCell.row - 1 == afterCell.row  && beforeCell.column == afterCell.column)
+            || (beforeCell.row == 0 && afterCell.row == numRow - 1 && beforeCell.column == afterCell.column)) {
+            dir = "U";
         }
         return dir;
     }
