@@ -40,17 +40,19 @@ public class InputParser {
         for (int i = 0; i < header.rowNr; i++) {
             String demonLine = br.readLine();
             String[] splits = demonLine.split(" ");
-            for (int j = 0; j < header.colNr; i++) {
+            for (int j = 0; j < header.colNr; j++) {
                 GridElem gridElem = new GridElem();
-                if ("*".equals(splits[j].charAt(0))) {
+                char car = splits[j].charAt(0);
+                if ('*'==car) {
                     gridElem.isWarmhole=true;
                     gridElem.relevance=0;
                 } else {
                     gridElem.isWarmhole=false;
-                    gridElem.relevance=Integer.parseInt(splits[j]);
+                    gridElem.relevance=Integer.parseInt(String.valueOf(car));
                 }
                 gridElem.isPresent=false;
                 v.e[i][j] = gridElem;
+                System.out.println(v.e[i][j].relevance);
             }
         }
         return v;

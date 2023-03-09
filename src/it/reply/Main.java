@@ -13,14 +13,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
-        System.out.println("Commit Lorenzo Fratini");
-        System.out.println("Commit Nicola Levorato");
-        System.out.println("Commit Fra");
-
         String inputDirectory = "src/it/reply/input";
         String outputDirectory = "src/it/reply/output";
-        List<String> inputFiles = Arrays.asList("01","04");
+        List<String> inputFiles = Arrays.asList("00");
 
         for(String file : inputFiles) {
             Algorithm algo = new Algorithm();
@@ -28,9 +23,9 @@ public class Main {
 
             // Parse input
             InputParser inputParser = new InputParser(inputDirectory + "/" + file);
-            Header pandora = inputParser.parseHeader();
+            Header header = inputParser.parseHeader();
             Snakes snakes = inputParser.parseSnakes();
-            Grid grid = inputParser.parseGrid(inputParser.parseHeader());
+            Grid grid = inputParser.parseGrid(header);
             inputParser.close();
 
             // Parse output
