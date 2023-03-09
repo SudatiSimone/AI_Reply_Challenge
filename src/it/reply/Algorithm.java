@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
-
+/*
 public class Algorithm {
 	
 	List<Integer> indexes = new LinkedList<>();
@@ -173,7 +173,7 @@ public class Algorithm {
 //		} else {
 //			return demonOpt3;
 //		}
-		return demonOpt;
+/*		return demonOpt;
 	}
 	
 	class DemonExtended extends Demon {
@@ -219,4 +219,4 @@ public class Algorithm {
 			return Float.compare(o1.pointRatio, o2.pointRatio) * (-1);
 		}
 	}
-}
+}*/
