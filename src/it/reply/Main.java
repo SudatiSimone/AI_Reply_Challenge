@@ -1,12 +1,10 @@
 package it.reply;
 
 import it.reply.model.Grid;
-import it.reply.model.GridElem;
 import it.reply.model.Header;
 import it.reply.model.Snakes;
 import it.reply.parser.InputParser;
 import it.reply.parser.OutputParser;
-import it.reply.utils.Utils;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,7 +18,7 @@ public class Main {
         List<String> inputFiles = Arrays.asList("00");
 
         for(String file : inputFiles) {
-            //Algorithm algo = new Algorithm();
+            Algorithm algo = new Algorithm();
             System.out.println("FILE: " + file);
 
             // Parse input
@@ -29,6 +27,10 @@ public class Main {
             Snakes snakes = inputParser.parseSnakes();
             Grid grid = inputParser.parseGrid(header);
             inputParser.close();
+
+            Algorithm algorithm = new Algorithm();
+
+            SnakeOut snakeOut = algorithm.solve(header, snakes, grid);
 
             // Parse output
             //OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
@@ -39,6 +41,9 @@ public class Main {
             GridElem cell = Utils.nextBestMove(grid, 2, 9, 5, 9);
             System.out.println("Riga: " + cell.indexRow);
             System.out.println("Colonna: " + cell.indexColumn);
+            OutputParser outputParser = new OutputParser(outputDirectory + "/" + file + "_out");
+            outputParser.parseOutput(snakeOut, header.snakeNr, header.colNr, header.rowNr);
+            outputParser.close();
         }
     }
 }
