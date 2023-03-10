@@ -44,7 +44,7 @@ public class InputParser {
                 GridElem gridElem = new GridElem();
                 if ("*".equals(splits[j])) {
                     gridElem.isWarmhole = true;
-                    gridElem.relevance = 0;
+                    gridElem.relevance = -1111243253;
                 } else {
                     gridElem.isWarmhole = false;
                     gridElem.relevance = Integer.parseInt(String.valueOf(splits[j]));

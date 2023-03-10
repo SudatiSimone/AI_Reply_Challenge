@@ -31,18 +31,20 @@ public class Algorithm {
             cells = new ArrayList<>();
 
             //iterare sulla lunghezza del serpente
-            for (Integer j =0; j < l; ++j){
+            for (Integer j =0; j < l; j++){
 
 
 
                 if (j == 0) {
                     gridElem = Utils.startFreeGridElem(h, grid);
-                    currCell = new Cell(gridElem.indexColumn, gridElem.indexRow, gridElem.isWarmhole);
+                    currCell = new Cell(gridElem.indexColumn, gridElem.indexRow, false);
                     cells.add(currCell);
+                    grid.e[gridElem.indexRow][gridElem.indexColumn].isPresent = true;
                 } else {
-                    GridElem gridElem1 = Utils.nextBestMove(grid, gridElem.indexRow, gridElem.indexColumn, h.rowNr -1, h.colNr -1);
-                    currCell = new Cell(gridElem1.indexColumn, gridElem1.indexRow, gridElem1.isWarmhole);
+                    GridElem gridElem1 = Utils.nextBestMove(grid, currCell.row, currCell.column, h.rowNr -1, h.colNr -1);
+                    currCell = new Cell(gridElem1.indexColumn, gridElem1.indexRow, false);
                     cells.add(currCell);
+                    grid.e[gridElem1.indexRow][gridElem1.indexColumn].isPresent = true;
                 }
             }
 

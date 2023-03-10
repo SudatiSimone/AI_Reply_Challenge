@@ -8,7 +8,9 @@ public class Utils {
 
     public static GridElem startFreeGridElem(Header header, Grid grid) {
         GridElem gridElem = new GridElem();
-        int max = grid.e[0][0].relevance;
+        int max =0;
+        if (!grid.e[0][0].isPresent) max = grid.e[0][0].relevance;
+        else max = grid.e[1][0].relevance;
 
         for (int i = 0; i < header.rowNr - 1; i++) {
 
